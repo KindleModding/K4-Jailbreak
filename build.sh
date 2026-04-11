@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 HACKNAME="jailbreak"
 HACKDIR="K4_JailBreak"
 PKGNAME="${HACKNAME}"
@@ -18,6 +20,8 @@ mkdir build
 
 echo "[*] Copying data directory"
 cp -r src/data build_tmp/data
+cp src/install.sh build_tmp/data/var/local/wan/info
+cp src/install.sh build_tmp/data/var/local/system/mntus.params
 
 echo "[*] Copying additional files"
 cp -r src/diagnostic_logs build/diagnostic_logs

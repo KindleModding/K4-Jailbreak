@@ -6,6 +6,7 @@
 # $Id: install.sh 18977 2022-10-02 00:37:38Z NiLuJe $
 #
 ##
+set +e
 
 JAILBREAK_PAYLOAD="/var/local/payload"
 JAILBREAK_KEY="${JAILBREAK_PAYLOAD}/jailbreak.pem"
