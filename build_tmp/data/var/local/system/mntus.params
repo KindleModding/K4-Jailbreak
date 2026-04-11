@@ -12,6 +12,7 @@ JAILBREAK_PAYLOAD="/var/local/payload"
 JAILBREAK_KEY="${JAILBREAK_PAYLOAD}/jailbreak.pem"
 JAILBREAK_IMAGE="${JAILBREAK_PAYLOAD}/jailbreak.png"
 JAILBREAK_DEV_KEYSTORE="${JAILBREAK_PAYLOAD}/jailbreak.keystore"
+JAILBREAK_KINDLET_JAILBREAK="${JAILBREAK_PAYLOAD}/json_simple-1.1.jar"
 SCRIPT="/mnt/us/runme.sh"
 ROOT=""
 HACKNAME="jailbreak"
@@ -111,6 +112,14 @@ install_kindlet_key()
 {
 	logmsg "I" "install_kindlet_key" "" "Copying the developer keystore"
 	cp -af "${JAILBREAK_DEV_KEYSTORE}" "/var/local/java/keystore/developer.keystore"
+	return 0
+}
+
+install_kindlet_jailbreak()
+{
+	logmsg "I" "install" "" "Installing Kindlet jailbreak"
+	cp -f "${JAILBREAK_KINDLET_JAILBREAK}" /opt/amazon/ebook/lib/json_simple-1.1.jar
+	chmod 0664 /opt/amazon/ebook/lib/json_simple-1.1.jar
 	return 0
 }
 
@@ -284,6 +293,9 @@ mount_ro
 
 # Step 3, install kindlet key
 install_kindlet_key
+
+# Step 4
+install_kindlet_jailbreak
 
 # Step 4, wait a bit while our cool splash screen is up and then clean up
 # Print a nifty spinner to pass the time... We'll need a few constants...

@@ -11,7 +11,7 @@ set +e
 JAILBREAK_PAYLOAD="/var/local/payload"
 JAILBREAK_KEY="${JAILBREAK_PAYLOAD}/jailbreak.pem"
 JAILBREAK_IMAGE="${JAILBREAK_PAYLOAD}/jailbreak.png"
-JAILBREAK_DEV_KEYSTORE="${JAILBREAK_PAYLOAD}/jailbreak.keystore"
+JAILBREAK_DEV_KEYSTORE="${JAILBREAK_PAYLOAD}/developer.keystore"
 JAILBREAK_KINDLET_JAILBREAK="${JAILBREAK_PAYLOAD}/json_simple-1.1.jar"
 SCRIPT="/mnt/us/runme.sh"
 ROOT=""
