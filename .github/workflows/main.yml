@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  kindletool:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: KindleModding/KindleTool
+    - name: Compile KindleTool
+      run: |
+          sudo apt update
+          sudo apt install -y zlib1g-dev libarchive-dev nettle-dev
+          make
+    - uses: actions/upload-artifact@v4
+      with:
+        name: kindletool
+        path: KindleTool/Release/kindletool
+
+  build:
+    runs-on: ubuntu-latest
+    needs: kindletool
+
+    steps:
+    - name: Prerequisites
+      run: |
+        sudo apt update
+        sudo apt install -y zip
+    - uses: actions/download-artifact@v4
+      with:
+        name: kindletool
+        path: /usr/local/bin/kindletool
+    - name: build
+      run: |
+          chmod 755 /usr/local/bin/kindletool
+          sh ./build.sh
+    - uses: actions/upload-artifact@v4
+      with:
+        name: K4-Jailbreak.zip
+        path: build/K4-Jailbreak.zip
