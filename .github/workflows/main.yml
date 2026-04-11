@@ -28,6 +28,9 @@ jobs:
     needs: kindletool
 
     steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
     - name: Prerequisites
       run: |
         sudo apt update
