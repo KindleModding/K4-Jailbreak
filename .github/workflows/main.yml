@@ -35,14 +35,15 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y zip
+        mkdir utils
     - uses: actions/download-artifact@v4
       with:
         name: kindletool
-        path: /usr/local/bin/kindletool
+        path: utils/kindletool
     - name: build
       run: |
-          chmod +x /usr/local/bin/kindletool
-          sh ./build.sh
+          chmod 777 utils/kindletool
+          PATH=./utils/:$PATH sh ./build.sh
     - uses: actions/upload-artifact@v4
       with:
         name: K4-Jailbreak.zip
