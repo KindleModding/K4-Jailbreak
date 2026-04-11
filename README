@@ -1,0 +1,75 @@
+Kindle 4 JailBreak
+Heavily based on Yifan Lu's Kindle 4/5 Jailbreak
+
+$Id: README 9771 2013-09-06 20:59:47Z NiLuJe $
+
+--== Information ==--
+
+What does the jailbreak do? All it does is open the door to unsigned modifications by installing a developer key into the device. It does not modify any existing files and it only writes one new file.
+It does NOT do anything useful or noticeable other than this. You must find and install modifications that extend the device (the jailbreak only allows that to be possible.)
+
+After installing the jailbreak, there is NO side effects at all (battery life, stability, etc). However, because you are no longer limited to Amazon's sandbox, you could potently damage your device by installing modifications that are improperly coded or by incorrectly using the modifications. Just a warning.
+
+--== Installation ==--
+
+This jailbreak is designed for usage on the Kindle 4. Please follow the directions in order, according the the current firmware version on your device:
+
+1) Plug in the Kindle and copy the data.tar.gz & ENABLE_DIAGS files plus the diagnostic_logs folder to the Kindle's USB drive's root
+2) Safely remove the USB cable and restart the Kindle (Menu -> Settings -> Menu -> Restart)
+3) Once the device restarts into diagnostics mode, select "D) Exit, Reboot or Disable Diags" (using the 5-way keypad)
+4) Select "R) Reboot System" and "Q) To continue" (following on-screen instructions, when it tells you to use 'FW Left' to select an option, it means left on the 5-way keypad)
+5) Wait about 20 seconds: you should see the Jailbreak screen for a while, and the device should then restart normally
+6) After the Kindle restarts, you should see a new book titled "You are Jailbroken", if you see this, the jailbreak has been successful.
+
+If you wish to run a shell script after the jailbreak process, create a file named "runme.sh" on the root of the Kindle's USB partition. Use this like a regular shell script. Make sure to remount root as read-write if you plan to modify the file system. It is safe to run the jailbreak multiple times.
+
+--== Installing Packages ==--
+
+You should NOT copy any packages until AFTER the jailbreak is successful. To install a package that you obtained as a .bin file, copy it to the Kindle's USB drive's root. Then go to Menu -> Settings -> Menu -> Update Your Kindle to install.
+
+Again, the jailbreak itself does NOTHING except open the door for other packages. Do not expect ads to magically disappear or internet to be unrestricted just by jailbreaking. In fact, don't expect those things at all.
+
+--== Uninstallation ==--
+
+If you wish to uninstall the jailbreak, it is recommended that you first uninstall all packages first because you cannot run any other uninstallers after removing the jailbreak.
+
+1) Plug in the Kindle and copy the uninstaller .bin to the Kindle's USB drive's root
+2) Safely remove the USB cable
+3) On the device, go to Menu -> Settings -> Menu -> Update Your Kindle
+
+--== Development ==--
+
+Development for the Kindle is usually done in one of two ways.
+
+== Java Kindlets ==
+
+Kindlet is the "official" way of writing Kindle applications. These are known as "Kindle Active Content" and are written in Java either using the official SDK or unofficially imported JARs.
+
+More information on writing unofficial Kindlet: http://www.mobileread.com/forums/showthread.php?t=102386
+
+After creating your Kindlet, you must sign it with the jailbreak Kindlet key to run it on any Kindle that installed this jailbreak.
+
+With the official SDK, to use the jailbreak Kindlet key:
+
+1) Open up Eclipse
+2) Open up "Workspace Preferences" in Eclipse
+3) Select the "Kindle Active Content" item
+4) Set the "Keystore Path:" to the "developer.keystore" file found in the "keys" directory of this package
+5) Set the "Keypass:" to "password" (without the quotes)
+
+To manually sign your Kindlet JAR, use the following commands:
+jarsigner -keystore /path/to/developer.keystore -storepass password JAR_FILE Kindlet
+jarsigner -keystore /path/to/developer.keystore -storepass password JAR_FILE KindletInteractionSupport
+jarsigner -keystore /path/to/developer.keystore -storepass password JAR_FILE KindletNetworkSupport
+where /path/to/developer.keystore is the actual path to the "developer.keystore" file found in the "keys" directory of this package and JAR_FILE is the name of your Kindlet JAR.
+
+== Other Apps ==
+
+Any other ARM Linux application (Linux ELFs, Shell Scripts, etc) can be installed to the device using a signed update package. This is more advanced, and the developer should take care of startup scripts, framebuffers, GUI, etc. All Kindles run the Linux 2.6 kernel and contains all standard GNU libraries.
+To cross compile ARM Linux code, you must use a toolchain. Below are multiple examples of ARM toolchains that you could use:
+http://www.scratchbox.org/ (There is evidence that Amazon uses this)
+http://www.codesourcery.com/gnu_toolchains/sgpp/ (Yifan and a number of MR devs use this)
+I personally build a TC from scratch via crosstool-ng (http://crosstool-ng.org/). Check the kindle-x-compile-tc.tar.gz attachment on this post: http://www.mobileread.com/forums/showpost.php?p=973688&postcount=1
+
+After creating your native application, you can install it on any jailbroken device by creating an update package. It is recommended that you use a packager such as my Kindle Tool (https://github.com/NiLuJe/KindleTool) [a fork of Yifan's original KindleTool (https://github.com/yifanlu/KindleTool)] to generate these packages. Check the wiki for more info: http://wiki.mobileread.com/wiki/Kindle_Touch_Hacking#Creating_custom_packages. Installer scripts will run as root on the Kindle when your update package is installed, so use it to add, remove, or modify files. The working directory for the script is the same directory that the script is in.
+If you wish to manually sign update packages (no information is provided, check the Kindle Tool source if you're curious), the RSA private key for signing jailbreak update packages is provided in the "keys" directory of this archive under "updater_key.pem".

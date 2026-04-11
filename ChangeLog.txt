@@ -1,0 +1,716 @@
+2022-10-02 00:37  NiLuJe
+
+	* [r18977] src/install.sh:
+	  
+	  Kindle Hacks: ID the initial batch of Scribe
+
+2022-02-13 19:01  NiLuJe
+
+	* [r18869] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Add the two new PW5 IDs from FW 5.14.2...
+
+2022-02-07 23:55  NiLuJe
+
+	* [r18865] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * More robust model detection
+	  Update to FBInk's method, which should prevent misidentifying newer
+	  G001 devices as Kindle 1 ;p...
+
+2022-01-16 19:39  NiLuJe
+
+	* [r18857] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Lay the groundwork for PW5 support
+
+2019-07-23 21:44  NiLuJe
+
+	* [r16252] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the KOA3
+
+2019-07-12 02:33  NiLuJe
+
+	* [r16160] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Make sure we deref hardlinks when creating tarballs that might be
+	  unpacked on vfat...
+
+2019-07-12 01:38  NiLuJe
+
+	* [r16157] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Switch from hard copies to hard links for most move/copy operations
+	  in the packaging scripts.
+	  Should hopefully make rebuilding the snapshots a tiny bit faster with
+	  no adverse affects ;).
+
+2019-06-01 13:18  NiLuJe
+
+	* [r15968] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Plug in a few new PW4 IDs...
+
+2019-04-12 03:14  NiLuJe
+
+	* [r15868] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the KT4
+
+2018-12-09 04:37  NiLuJe
+
+	* [r15581] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Add potentially bogus new PW4 IDs...
+
+2018-11-08 21:24  NiLuJe
+
+	* [r15506] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the PW4
+
+2018-06-02 16:58  NiLuJe
+
+	* [r15011] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Use grep -q instead of IO reidrections where applicable
+
+2018-06-01 23:09  NiLuJe
+
+	* [r15003] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Missed a few spots... Having seventy-billion variants of this piece
+	  of code is fun.
+
+2018-06-01 23:04  NiLuJe
+
+	* [r15002] build/build-updates.sh, src/install.sh, src/uninstall.sh:
+	  
+	  Kindle Touch Hacks:
+	  * JailBreak:
+	  * Not mounting rootfs inside root's home on diags does indeed sound
+	  like a saner proposition
+
+2018-06-01 17:59  NiLuJe
+
+	* [r15000] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Prettier PackageName in packaging metadata
+
+2018-06-01 17:30  NiLuJe
+
+	* [r14998] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Add packaging metadata to all OTAv2 packages that will *always* go
+	  through MRPI.
+
+2017-11-24 22:01  NiLuJe
+
+	* [r14378] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * First pass of KOA2 detection
+
+2016-07-11 12:24  NiLuJe
+
+	* [r13342] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Fix some device codes...
+
+2016-07-08 18:09  NiLuJe
+
+	* [r13337] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * *Potentially* slightly more accurate device code for the third
+	  KT3...
+
+2016-07-08 02:43  NiLuJe
+
+	* [r13333] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Handle the White PW3, the Oasis & the KT3
+	  * Detect FW 5.8
+
+2015-08-17 13:47  NiLuJe
+
+	* [r12225] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Rework the new device ID stuff.
+	  Get rid of the kmodel_v2 crap, kmodel now always points to the actual
+	  device code, no matter the scheme.
+
+2015-08-14 14:10  NiLuJe
+
+	* [r12151] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Rework the model detection to handle the PW3 properly...
+
+2015-08-01 15:49  NiLuJe
+
+	* [r12109] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * First innacurate stab at detecting the PW3.
+	  This will probably need to be fixed at one point...
+
+2015-04-28 19:31  NiLuJe
+
+	* [r11910] build/build-updates.sh:
+	  
+	  The great shebang enfixening!
+
+2015-02-26 14:07  NiLuJe
+
+	* [r11689] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Avoid pigz for device-facing tarballs, based on the same
+	  compatibility concerns as with lbzip2...
+
+2015-02-23 22:30  NiLuJe
+
+	* [r11620] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Parallelize compression in buildscripts... (lbzip2, pigz & threaded
+	  xz)
+
+2014-11-23 15:45  NiLuJe
+
+	* [r11140] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Use cp -af instead of cp -a
+
+2014-11-14 16:09  NiLuJe
+
+	* [r11063] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect another KT2 variant
+
+2014-11-07 23:25  NiLuJe
+
+	* [r11047] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect more KV variants
+
+2014-11-07 18:01  NiLuJe
+
+	* [r11042] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * First pass at detecting the Voyage...
+
+2014-10-25 00:34  NiLuJe
+
+	* [r10997] build/build-updates.sh:
+	  
+	  Kindle Touch Hacks:
+	  • JailBreak:
+	  • Tag v1.12.N
+	  • K4 JailBreak:
+	  • Tag v1.8.N
+	  • USBNetwork:
+	  • Tag v0.17.N
+	  • ScreenSavers:
+	  • Tag v0.18.N
+	  • Python:
+	  • Tag v0.11.N
+	  • Fonts:
+	  • Tag v0.9.N
+
+2014-10-05 15:03  NiLuJe
+
+	* [r10947] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Possibly handle the Kindle Basic...
+
+2014-07-21 22:23  NiLuJe
+
+	* [r10721] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect a bunch of new unidentified PW2 models
+
+2014-07-15 18:45  NiLuJe
+
+	* [r10714] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the 4GB, 3G EU PW2
+
+2014-07-07 22:19  NiLuJe
+
+	* [r10702] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the 4GB EU WiFi PW2
+
+2014-07-01 00:15  NiLuJe
+
+	* [r10686] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Make the few inlined libotautils copy easier to spot
+	  * I *hope* I didn't break logging on some weird K4 systems by removing
+	  redundant constants from the logging code, but it works on my device.
+
+2014-06-27 01:40  NiLuJe
+
+	* [r10682] build/build-updates.sh, src/install.sh, src/uninstall.sh:
+	  
+	  Kindle Hacks:
+	  * Move MKK (Legacy) & the K4 JB to libotautils
+
+2014-06-24 22:21  NiLuJe
+
+	* [r10658] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  • Detect GNU tar properly on OS X.
+	  The individual build scripts should now run on OS X, but the release
+	  scripts probably still don't (svn2cl [trivial], and some sed usage,
+	  mostly).
+
+2014-04-11 13:08  NiLuJe
+
+	* [r10460] build/build-updates.sh:
+	  
+	  KUAL Extensions:
+	  * gawk:
+	  * Tag v1.3.N
+	  Kindle Touch Hacks:
+	  * JailBreak:
+	  * Tag v1.10.N
+	  * USBNetwork:
+	  * Tag v0.16.N
+	  * ScreenSavers:
+	  * Tag v0.17.N
+	  * Python:
+	  * Tag v0.10.N
+	  * Fonts:
+	  * Tag v0.8.N
+	  Kindle Hacks:
+	  * JailBreak:
+	  * Tag v0.12.N
+	  * ScreenSavers:
+	  * Tag v0.43.N
+	  * Fonts:
+	  * Tag v5.13.N
+	  * USBNetwork:
+	  * Tag v0.54.N
+	  * Python:
+	  * Tag v0.10.N
+
+2014-03-06 22:53  NiLuJe
+
+	* [r10404] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the CA PW2 3G
+
+2014-02-14 17:27  NiLuJe
+
+	* [r10328] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Use Update_*.bin package filenames instead of update_*.bin,
+	  to avoid triggering the recovery updater on boot. (thanks, dsmid ;))
+
+2014-01-10 03:55  NiLuJe
+
+	* [r10305] src/install.sh:
+	  
+	  Revert r10301, false alarm ;).
+
+2014-01-09 23:10  NiLuJe
+
+	* [r10301] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect a new 3G PW2 model (Central Africa?)
+
+2014-01-09 01:33  NiLuJe
+
+	* [r10286] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * USBNetwork:
+	  * Huh. Fix a very old bug. No idea how I ever hoped this to magically
+	  work on its own...
+
+2013-12-23 16:13  NiLuJe
+
+	* [r10250] src/install.sh:
+	  
+	  Avoid some forks & simplify model detection...
+	  
+	  For some strange reason, I was convinced cut wasn't feature-complete
+	  enough to handle that on FW 2.x... o_O
+
+2013-11-28 17:49  NiLuJe
+
+	* [r10177] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the JP 3G PW2
+
+2013-11-25 17:23  NiLuJe
+
+	* [r10171] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the RU 3G PW2
+
+2013-11-24 13:02  NiLuJe
+
+	* [r10169] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Handle the weird 90-prefixed S/N...
+
+2013-11-23 14:51  NiLuJe
+
+	* [r10152] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the EU 3G PW2
+
+2013-11-10 23:07  NiLuJe
+
+	* [r10053] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Detect the PW2 3G US
+
+2013-11-01 15:04  NiLuJe
+
+	* [r10017] src/install.sh:
+	  
+	  Kindle Stuff:
+	  * Detect the JP PW2 WiFi
+
+2013-10-03 17:32  NiLuJe
+
+	* [r9911] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Handle the PW2 WiFi device code
+
+2013-09-18 11:34  NiLuJe
+
+	* [r9807] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Tweak the libkh eips prints to *really* be edge-to-edge...
+
+2013-09-06 20:59  NiLuJe
+
+	* [r9771] README:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Fix jailbreaking/diags instructions, I forgot that some K4 diags
+	  build might require
+	  the empty log file like on the Touch... Thanks to pholm for reporting
+	  this :).
+
+2013-06-24 20:15  NiLuJe
+
+	* [r9325] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Make all build scripts automatically bomb out on non 0 return codes,
+	  so I can safely catch
+	  snafus during my full rebuilds...
+
+2013-04-26 16:50  NiLuJe
+
+	* [r9095] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Detect the Brazilian 3G PW
+
+2013-02-12 16:00  NiLuJe
+
+	* [r9067] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Single bracket tests for compat, you never know...
+
+2013-02-11 23:01  NiLuJe
+
+	* [r9066] README:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Fix install instructions
+
+2013-02-11 20:50  NiLuJe
+
+	* [r9064] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Tag v1.6.N
+
+2013-02-11 20:49  NiLuJe
+
+	* [r9063] README, src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Update doc (merge the double instruction set into one, it's clearer,
+	  and probably safer anyway)
+
+2013-02-11 19:48  NiLuJe
+
+	* [r9062] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * K4 JailBreak:
+	  * Finish merging dsmid's ideads & changes
+
+2013-02-10 23:51  NiLuJe
+
+	* [r9061] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * K4 JB:
+	  * Indent!
+
+2013-02-01 19:07  NiLuJe
+
+	* [r9051] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Start merging dsmid's changes to make it faster :).
+
+2013-01-29 15:44  NiLuJe
+
+	* [r9048] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Properly detect JP & CA 3G PW devices
+
+2012-11-10 02:17  NiLuJe
+
+	* [r8900] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Use the new aliases for the whole K4 & K5 model range in every build
+	  script
+
+2012-11-06 20:46  NiLuJe
+
+	* [r8850] keys/developer.keystore, src/payload/jailbreak.keystore:
+	  
+	  Kindle Touch Hacks:
+	  * Bump developer keystore to 20121106
+
+2012-10-25 18:25  NiLuJe
+
+	* [r8761] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Handle/Detect the UK PW 3G
+
+2012-10-25 16:20  NiLuJe
+
+	* [r8759] src/payload/jailbreak.png:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Use the new splash screen
+
+2012-10-17 20:56  NiLuJe
+
+	* [r8717] README:
+	  
+	  Kindle Touch Hacks:
+	  * K4 JailBreak:
+	  * Yeah... the mntus.params thing from main sucks balls on the K4....
+	  Needs a shitload of reboots to get it back in a proper state...
+
+2012-10-17 18:37  NiLuJe
+
+	* [r8711] README:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Fix a typo.
+
+2012-10-17 18:36  NiLuJe
+
+	* [r8710] README:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Reword a bit the two reboot thing for 4.x...
+
+2012-10-17 18:35  NiLuJe
+
+	* [r8709] README:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * 4.0.x will probably need two restarts.
+
+2012-10-17 17:03  NiLuJe
+
+	* [r8706] build/build-updates.sh:
+	  
+	  Kindle Touch Hacks:
+	  * JailBreak:
+	  * Tag v1.5.N
+	  * K4 JailBreak:
+	  * Tag v1.5.N
+
+2012-10-17 17:01  NiLuJe
+
+	* [r8705] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * JailBreak:
+	  * Fix potential minor issues on the PaperWhite...
+
+2012-10-16 15:17  NiLuJe
+
+	* [r8699] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Be case senstivie when we extract the S/N, we're case-sensitive
+	  later when comparing them...
+
+2012-10-16 15:16  NiLuJe
+
+	* [r8698] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Cast a wider net when parsing S/N to avoid missing some...
+
+2012-10-15 22:55  NiLuJe
+
+	* [r8697] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Fix a stupid bug in model detection via S/N matching:
+	  The S/N aren't in base16, they're in base32hex!
+	  (at the very least, I might need some more data to confirm that...)
+
+2012-10-04 02:06  NiLuJe
+
+	* [r8655] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * Update S/N based model detection logic to handle the US PW ids
+
+2012-10-03 00:03  NiLuJe
+
+	* [r8650] keys/developer.keystore, src/payload/jailbreak.keystore:
+	  
+	  Kindle Touch Hacks:
+	  * Update dev keystore to 2012 10 02 (Thanks, PoP ;)).
+
+2012-09-22 18:01  NiLuJe
+
+	* [r8620] build/build-updates.sh:
+	  
+	  Kindle Hacks:
+	  * Bump K4 JailBreak to v1.4.N
+
+2012-09-22 17:34  NiLuJe
+
+	* [r8613] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Fix a few typos in comments
+
+2012-09-22 17:32  NiLuJe
+
+	* [r8612] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * More comments!
+
+2012-09-22 17:26  NiLuJe
+
+	* [r8611] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * More error handling/logging in the version detection logic...
+
+2012-09-22 17:20  NiLuJe
+
+	* [r8610] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JB:
+	  * Fix a nasty typo
+
+2012-09-22 17:11  NiLuJe
+
+	* [r8609] src/install.sh:
+	  
+	  Kindle Hacks:
+	  * K4 JailBreak:
+	  * Use a slightly more accurate version detection method...
+
+2012-09-16 19:31  NiLuJe
+
+	* [r8544] build/build-updates.sh:
+	  
+	  Kindle Touch Hacks:
+	  * Bump K4 JB to 1.3.N
+
+2012-09-16 19:30  NiLuJe
+
+	* [r8543] src/install.sh:
+	  
+	  Kindle Touch Hacks:
+	  * K4 JailBreak:
+	  * Make the version checks more lenient, because the whole devising
+	  the Kindle version from the build number is becoming a highly
+	  innacurate science...
+
+2012-09-15 23:45  NiLuJe
+
+	* [r8522] .[ADD], ENABLE_DIAGS[ADD], README[ADD], build[ADD],
+	  build/build-updates.sh[ADD], diagnostic_logs[ADD],
+	  diagnostic_logs/device_info.xml[ADD], keys[ADD],
+	  keys/developer.keystore[ADD], keys/updater_key.pem[ADD], src[ADD],
+	  src/install.sh[ADD], src/payload[ADD],
+	  src/payload/jailbreak.keystore[ADD], src/payload/jailbreak.pem[ADD],
+	  src/payload/jailbreak.png[ADD], src/uninstall.sh[ADD]:
+	  
+	  Kindle Hacks:
+	  * Repack the K4 jailBreak properly for FW 4.1.0...
+
