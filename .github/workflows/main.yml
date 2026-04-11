@@ -43,7 +43,7 @@ jobs:
     - name: build
       run: |
           chmod 777 utils/kindletool
-          PATH=./utils/:$PATH sh ./build.sh
+          sh ./build.sh
     - uses: actions/upload-artifact@v4
       with:
         name: K4-Jailbreak.zip

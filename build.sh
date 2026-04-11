@@ -4,6 +4,7 @@ HACKDIR="K4_JailBreak"
 PKGNAME="${HACKNAME}"
 PKGVER="1.8.N"
 PKGREV="$(git rev-parse --short HEAD)"
+KINDLETOOL="${PWD}/utils/kindletool"
 
 rm -rf build_tmp
 rm -rf build
@@ -30,7 +31,7 @@ mv build_tmp/data.tar.gz build/data.tar.gz
 
 echo "[*] Building uninstaller..."
 cd src
-    kindletool create ota2 -xPackageName="${HACKDIR}" -xPackageVersion="${PKGVER}-r${PKGREV}" -xPackageAuthor="yifanlu, NiLuJe" -xPackageMaintainer="Hackerdude, NiLuJe" -X -d kindle4 libotautils uninstall.sh ../build/Update_${PKGNAME}_${PKGVER}_uninstall.bin
+    ${KINDLETOOL} create ota2 -xPackageName="${HACKDIR}" -xPackageVersion="${PKGVER}-r${PKGREV}" -xPackageAuthor="yifanlu, NiLuJe" -xPackageMaintainer="Hackerdude, NiLuJe" -X -d kindle4 libotautils uninstall.sh ../build/Update_${PKGNAME}_${PKGVER}_uninstall.bin
 cd ..
 cd build
     zip -rm build.zip .
