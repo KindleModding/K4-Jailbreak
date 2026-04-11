@@ -41,7 +41,7 @@ jobs:
         path: /usr/local/bin/kindletool
     - name: build
       run: |
-          chmod 755 /usr/local/bin/kindletool
+          chmod +x /usr/local/bin/kindletool
           sh ./build.sh
     - uses: actions/upload-artifact@v4
       with:
