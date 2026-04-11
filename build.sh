@@ -33,7 +33,7 @@ cd src
     kindletool create ota2 -xPackageName="${HACKDIR}" -xPackageVersion="${PKGVER}-r${PKGREV}" -xPackageAuthor="yifanlu, NiLuJe" -xPackageMaintainer="Hackerdude, NiLuJe" -X -d kindle4 libotautils uninstall.sh ../build/Update_${PKGNAME}_${PKGVER}_uninstall.bin
 cd ..
 cd build
-    zip -r build.zip .
+    zip -rm build.zip .
 cd ..
 
 echo "[*] Done."
