@@ -39,10 +39,11 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         name: kindletool
-        path: utils/kindletool
+        path: utils/
     - name: build
       run: |
-          chmod 777 utils/kindletool
+          chmod 755 ./utils/kindletool
+          chown -R $USER: ./utils/
           sh ./build.sh
     - uses: actions/upload-artifact@v4
       with:
