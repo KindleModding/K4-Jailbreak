@@ -9,10 +9,6 @@
 set +e
 
 JAILBREAK_PAYLOAD="/var/local/payload"
-JAILBREAK_KEY="${JAILBREAK_PAYLOAD}/jailbreak.pem"
-JAILBREAK_IMAGE="${JAILBREAK_PAYLOAD}/jailbreak.png"
-JAILBREAK_DEV_KEYSTORE="${JAILBREAK_PAYLOAD}/developer.keystore"
-JAILBREAK_KINDLET_JAILBREAK="${JAILBREAK_PAYLOAD}/json_simple-1.1.jar"
 SCRIPT="/mnt/us/runme.sh"
 ROOT=""
 HACKNAME="jailbreak"
@@ -100,29 +96,6 @@ safesource()
 	[ -f "${1}" ] && . "${1}"
 }
 
-install_touch_update_key()
-{
-	# Only on Kindle 4 & 5
-	logmsg "I" "install_touch_update_key" "" "Copying the jailbreak updater key"
-	cp -af "${JAILBREAK_KEY}" "${ROOT}/etc/uks/pubdevkey01.pem"
-	return 0
-}
-
-install_kindlet_key()
-{
-	logmsg "I" "install_kindlet_key" "" "Copying the developer keystore"
-	cp -af "${JAILBREAK_DEV_KEYSTORE}" "/var/local/java/keystore/developer.keystore"
-	return 0
-}
-
-install_kindlet_jailbreak()
-{
-	logmsg "I" "install" "" "Installing Kindlet jailbreak"
-	cp -f "${JAILBREAK_KINDLET_JAILBREAK}" /opt/amazon/ebook/lib/json_simple-1.1.jar
-	chmod 0664 /opt/amazon/ebook/lib/json_simple-1.1.jar
-	return 0
-}
-
 clean_up_wan()
 {
 	[ -n "${WAN_INFO}" ] || WAN_INFO="/var/local/wan/info"
@@ -173,7 +146,7 @@ logmsg "I" "jailbreak" "" "Running from: ${0}"
 
 # Step 1, we put a pretty image on screen
 eips -c
-eips -f -g "${JAILBREAK_IMAGE}"
+eips -f -g "${JAILBREAK_PAYLOAD}/jailbreak.png"
 
 # Step 2, check device version
 VERSION=0
@@ -287,15 +260,19 @@ fi
 # Step 3, install updater key
 mount_root_rw
 if [ "${VERSION}" -ge "4" ] ; then
-	install_touch_update_key
+	logmsg "I" "install_touch_update_key" "" "Copying the jailbreak updater key"
+	cp -af "${JAILBREAK_PAYLOAD}/jailbreak.pem" "${ROOT}/etc/uks/pubdevkey01.pem"
 fi
 mount_ro
 
 # Step 3, install kindlet key
-install_kindlet_key
+logmsg "I" "install_kindlet_key" "" "Copying the developer keystore"
+cp -af "${JAILBREAK_PAYLOAD}/developer.keystore" "/var/local/java/keystore/developer.keystore"
 
 # Step 4
-install_kindlet_jailbreak
+logmsg "I" "install" "" "Installing Kindlet jailbreak"
+cp -f "${JAILBREAK_PAYLOAD}/json_simple-1.1.jar" /opt/amazon/ebook/lib/json_simple-1.1.jar
+chmod 0664 /opt/amazon/ebook/lib/json_simple-1.1.jar
 
 # Step 4, wait a bit while our cool splash screen is up and then clean up
 # Print a nifty spinner to pass the time... We'll need a few constants...
