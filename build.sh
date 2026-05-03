@@ -27,7 +27,10 @@ echo "[*] Copying additional files"
 cp -r src/diagnostic_logs build/diagnostic_logs
 cp -r src/ENABLE_DIAGS build/
 
-echo "[*] Building main..."
+echo "[*] Removing .gitkeep files"
+find build_tmp -name ".gitkeep" -delete
+
+echo "[*] Building tarbomb..."
 cd build_tmp
     tar --hard-dereference --owner root --group root --transform 's/data//' --show-transformed -cvzf data.tar.gz data/*
 cd ..

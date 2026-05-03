@@ -9,7 +9,6 @@
 set +e
 
 JAILBREAK_PAYLOAD="/var/local/payload"
-MKK_PERSISTENT_STORAGE="/var/local/mkk"
 SCRIPT="/mnt/us/runme.sh"
 ROOT=""
 HACKNAME="jailbreak"
