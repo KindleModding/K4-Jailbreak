@@ -9,10 +9,10 @@
 set +e
 
 JAILBREAK_PAYLOAD="/var/local/payload"
+MKK_PERSISTENT_STORAGE="/var/local/mkk"
 SCRIPT="/mnt/us/runme.sh"
 ROOT=""
 HACKNAME="jailbreak"
-
 
 ### NOTE: Inlined copy of libotautils r10677...
 ## Logging
@@ -141,6 +141,28 @@ clean_up()
 	fi
 }
 
+make_mutable() {
+	local my_path="${1}"
+	# NOTE: Can't do that on symlinks, hence the hoop-jumping...
+	if [ -d "${my_path}" ] ; then
+		find "${my_path}" -type d -exec chattr -i '{}' \;
+		find "${my_path}" -type f -exec chattr -i '{}' \;
+	elif [ -f "${my_path}" ] ; then
+		chattr -i "${my_path}"
+	fi
+}
+
+make_immutable() {
+	local my_path="${1}"
+	if [ -d "${my_path}" ] ; then
+		find "${my_path}" -type d -exec chattr +i '{}' \;
+		find "${my_path}" -type f -exec chattr +i '{}' \;
+	elif [ -f "${my_path}" ] ; then
+		chattr +i "${my_path}"
+	fi
+}
+
+
 # Step 0, log who triggered us
 logmsg "I" "jailbreak" "" "Running from: ${0}"
 
@@ -263,16 +285,21 @@ if [ "${VERSION}" -ge "4" ] ; then
 	logmsg "I" "install_touch_update_key" "" "Copying the jailbreak updater key"
 	cp -af "${JAILBREAK_PAYLOAD}/jailbreak.pem" "${ROOT}/etc/uks/pubdevkey01.pem"
 fi
-mount_ro
 
 # Step 3, install kindlet key
 logmsg "I" "install_kindlet_key" "" "Copying the developer keystore"
+make_mutable /var/local/java/keystore/developer.keystore
 cp -af "${JAILBREAK_PAYLOAD}/developer.keystore" "/var/local/java/keystore/developer.keystore"
+make_immutable /var/local/java/keystore/developer.keystore
 
 # Step 4
 logmsg "I" "install" "" "Installing Kindlet jailbreak"
-cp -f "${JAILBREAK_PAYLOAD}/json_simple-1.1.jar" /opt/amazon/ebook/lib/json_simple-1.1.jar
+make_mutable /opt/amazon/ebook/lib/json_simple-1.1.jar
+cp -f "${JAILBREAK_PAYLOAD}/json_simple-1.1.jar" "/opt/amazon/ebook/lib/json_simple-1.1.jar"
 chmod 0664 /opt/amazon/ebook/lib/json_simple-1.1.jar
+make_immutable /opt/amazon/ebook/lib/json_simple-1.1.jar
+
+mount_ro
 
 # Step 4, wait a bit while our cool splash screen is up and then clean up
 # Print a nifty spinner to pass the time... We'll need a few constants...
