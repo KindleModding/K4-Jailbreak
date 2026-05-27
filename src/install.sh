@@ -282,7 +282,7 @@ fi
 mount_root_rw
 if [ "${VERSION}" -ge "4" ] ; then
 	logmsg "I" "install_touch_update_key" "" "Copying the jailbreak updater key"
-	cp -af "${JAILBREAK_PAYLOAD}/jailbreak.pem" "${ROOT}/etc/uks/pubdevkey01.pem"
+	cp -af "${JAILBREAK_PAYLOAD}/pubdevkey01.pem" "${ROOT}/etc/uks/pubdevkey01.pem"
 fi
 
 # Step 3, install kindlet key
