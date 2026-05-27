@@ -35,7 +35,6 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y zip
-        rm utils/kindletool
     - uses: actions/download-artifact@v4
       with:
         name: kindletool
@@ -44,6 +43,7 @@ jobs:
       run: |
           chmod 755 ./utils/kindletool
           chown -R $USER: ./utils/
+          export PATH=$PATH:$PWD/utils/
           sh ./build.sh
     - uses: actions/upload-artifact@v4
       with:
