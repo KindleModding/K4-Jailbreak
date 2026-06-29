@@ -293,10 +293,10 @@ make_immutable /var/local/java/keystore/developer.keystore
 
 # Step 4
 logmsg "I" "install" "" "Installing Kindlet jailbreak"
-make_mutable /opt/amazon/ebook/lib/json_simple-1.1.jar
-cp -f "${JAILBREAK_PAYLOAD}/json_simple-1.1.jar" "/opt/amazon/ebook/lib/json_simple-1.1.jar"
-chmod 0664 /opt/amazon/ebook/lib/json_simple-1.1.jar
-make_immutable /opt/amazon/ebook/lib/json_simple-1.1.jar
+make_mutable "${ROOT}/opt/amazon/ebook/lib/json_simple-1.1.jar"
+cp -af "${JAILBREAK_PAYLOAD}/json_simple-1.1.jar" "${ROOT}/opt/amazon/ebook/lib/json_simple-1.1.jar"
+chmod 0664 "${ROOT}/opt/amazon/ebook/lib/json_simple-1.1.jar"
+make_immutable "${ROOT}/opt/amazon/ebook/lib/json_simple-1.1.jar"
 
 mount_ro
 
